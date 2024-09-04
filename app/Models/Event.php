@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\Picture;
 
 class Event extends Model
 {
@@ -18,6 +19,11 @@ class Event extends Model
         'description',
         'visibility',
     ];
+
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class);
+    }
 
     public static function generateSlug($name){
         $slugBase = Str::slug(trim($name), '-');
