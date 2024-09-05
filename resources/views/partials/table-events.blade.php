@@ -1,5 +1,5 @@
  {{-- @include('partials.modal-show') DA VEDERE SE AGGIUNGERE IN SEGUITO O NO! --}}  
-{{--@if($elements->isEmpty())
+@if($elements->isEmpty())
     <div class="alert alert-info">
         There are no events to display. Please add a new event.
     </div>
@@ -7,12 +7,13 @@
 <table id="mr-table" class="table table-hover shadow mb-2 mt-4 ms-3">
     <thead>
         <tr>
-            <th class="text-white w-25 d-none fw-normal d-xl-table-cell" scope="col">Apartment cover</th>
-            <th class="text-white w-25 d-xl-table-cell fw-normal" scope="col">Apartment name</th>
-            <th class="text-white w-10 fw-normal d-lg-table-cell" scope="col">Promotions</th>
-            <th scope="col" class="text-white w-10 fw-normal d-lg-table-cell">Visibility</th>
-            <th scope="col" class="text-white w-50 fw-normal d-lg-table-cell">Address</th>
-            <th scope="col" class="text-white w-25 fw-normal {{ Route::currentRouteName() === 'admin.apartments.index' }}">Actions</th>
+            <th class="text-white w-25 d-none fw-normal d-xl-table-cell" scope="col">Event cover</th>
+            <th class="text-white w-25 d-xl-table-cell fw-normal" scope="col">Event name</th>
+            <th class="text-white w-15 fw-normal d-lg-table-cell" scope="col">Date</th>
+            <th class="text-white w-15 fw-normal d-lg-table-cell" scope="col">Time</th>
+            <th scope="col" class="text-white w-15 fw-normal d-lg-table-cell">Visibility</th>
+            <th scope="col" class="text-white w-15 fw-normal d-lg-table-cell">Description</th>
+            <th scope="col" class="text-white w-15 fw-normal {{ Route::currentRouteName() === 'admin.apartments.index' }}">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +21,8 @@
             <tr>
                 <td id="td-image-cover" class=" d-xl-table-cell"><img class="img-fluid rounded" src="{{ asset('storage/' . $element->image_cover) }}" alt="{{ $element->name }}"></td>
                 <td class="d-xl-table-cell align-content-center">{{ $element->name }}</td>
-                <td class="d-lg-table-cell align-content-center">
-                    
-                </td>
+                <td class="d-lg-table-cell align-content-center">{{ $element->date }}</td>
+                <td class="d-lg-table-cell align-content-center">{{ $element->hour }}</td>
                 <td class="d-xl-table-cell align-content-center">
                     @if ($element->visibility == 1)
                     <div>
@@ -36,14 +36,14 @@
                         </div>
                     @endif
                 </td>
-                <td class="d-lg-table-cell align-content-center">{{ $element->address }}</td>
-                <td class="{{ Route::currentRouteName() === 'admin.apartments.index' ? '' : 'd-none' }} align-content-center pe-3 d-lg-table-cell">
+                <td class="d-lg-table-cell align-content-center">{{ $element->description }}</td>
+                <td class="{{ Route::currentRouteName() === 'admin.events.index' ? '' : 'd-none' }} align-content-center pe-3 d-lg-table-cell">
                         <!-- Administration Actions -->
-                            <a href="{{ route('admin.apartments.show', $element) }}" class="btn draw-border">
+                            {{-- <a href="{{ route('admin.apartments.show', $element) }}" class="btn draw-border">
                                 <div class="icon-container">
                                     <i class="fs-3 fas fa-info-circle"></i>
                                 </div>
-                            </a>
+                            </a> 
                             <a href="{{ route('admin.apartments.edit', $element) }}" class="btn draw-border">
                                 <div class="icon-container">
                                     <i class="fs-3 fas fa-pencil-alt"></i>
@@ -56,11 +56,11 @@
                                 <button type="button" class="btn draw-border" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $element->id }}">
                                     <i class="fs-3 text-danger fa-solid fa-trash"></i>
                                 </button>
-                            </form> 
+                            </form> --}}
                 </td>
             </tr>
-            @include('partials.modal-delete', ['element' => $element])
+            {{--  @include('partials.modal-delete', ['element' => $element]) --}}
         @endforeach
     </tbody>
 </table>
-@endif --}}
+@endif 
