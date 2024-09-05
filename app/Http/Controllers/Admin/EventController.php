@@ -39,12 +39,16 @@ class EventController extends Controller
         // Usa i dati validati dalla request personalizzata
         $validatedData = $request->validated();
 
+        // Genera lo slug usando il metodo statico nel modello
+        $validatedData['slug'] = Event::generateSlug($validatedData['name']);
+
         // Crea un nuovo evento con i dati validati
         Event::create($validatedData);
 
         // Redirect alla pagina degli eventi con un messaggio di successo
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully.');
     }
+
 
     /**
      * Display the specified resource.

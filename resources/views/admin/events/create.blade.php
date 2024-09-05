@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="text-center mx-auto justify-content-center d-flex gap-2">
-                    <button type="submit" class="btn-2 draw-border-2 p-2 px-3 mt-3 mx-3"><i class="fa-solid fa-plus"></i> Add the Apartment</button>
+                    <button type="submit" class="btn-2 draw-border-2 p-2 px-3 mt-3 mx-3"><i class="fa-solid fa-plus"></i> Add the event</button>
                 </div> 
             </form>
         </div>

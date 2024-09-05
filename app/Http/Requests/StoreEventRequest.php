@@ -24,7 +24,7 @@ class StoreEventRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'date' => 'required|date',  // Changed from integer to date to validate the date correctly
-            'time' => 'required|date_format:H',  // Changed from integer to hour format
+            'time' => 'required|date_format:H:i',  // Changed from integer to hour format
             'description' => 'required|string',
             'image_cover' => 'required|image|max:2048',
         ];
