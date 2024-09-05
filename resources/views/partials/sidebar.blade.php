@@ -30,8 +30,8 @@
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
 
           <li class="nav-item">
-            <a class=""
-              href="">Apartments</a>
+            <a class="nav-link {Route::currentRouteName() == 'admin.events.index' ? 'active' : ''}}"
+              href="">Events</a>
           </li>
           <li class="nav-item">
             <a class=""

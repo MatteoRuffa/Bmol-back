@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -12,7 +14,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::paginate(10);
+        $totalEvents = DB::table('events')
+                            //  ->where('deleted_at', null)   DA RIMETTERE DOPO CON LA SOFT DELETE
+                             ->count();
+        return view("admin.events.index", compact('events', 'totalEvents'));
     }
 
     /**
