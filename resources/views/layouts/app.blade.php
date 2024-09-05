@@ -24,7 +24,7 @@
 
 <body>
     <div id="app">
-        <nav id="nav_login" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav id="nav_login" class="navbar navbar-expand-md ">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_cortese">
