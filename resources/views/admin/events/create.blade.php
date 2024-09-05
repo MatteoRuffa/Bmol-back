@@ -22,12 +22,12 @@
                     
                 <h3 class="mt-4">date info</h3>
                 <div class="row">
-                    <div class="mb-3 col @error('time') @enderror">
-                        <label for="time" class="form-label fs-5 fw-medium">Select Time</label>
-                        <input class="form-control @error('time') is-invalid @enderror"
-                            id="time" name="time" value="{{ old('time') }}" type="time" step="3600" required>
-                        <label for="time">*required</label>
-                        @error('time')
+                    <div class="mb-3 col @error('hour') @enderror">
+                        <label for="hour" class="form-label fs-5 fw-medium">Select hour</label>
+                        <input class="form-control @error('hour') is-invalid @enderror"
+                            id="hour" name="hour" value="{{ old('hour') }}" type="time" step="3600" required>
+                        <label for="hour">*required</label>
+                        @error('hour')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -63,7 +63,7 @@
                             <label class="form-check-label fs-5  fw-medium" for="visibility">
                                 Make visible
                             </label>
-                            <label for="fs-5">( this will allow your apartment to be visible in the research )</label>
+                            <label for="fs-5">( this will allow your event to be visible in the research )</label>
                         </div>
                     </div>  
                 </div>
@@ -88,6 +88,8 @@
 
                 <div class="text-center mx-auto justify-content-center d-flex gap-2">
                     <button type="submit" class="btn-2 draw-border-2 p-2 px-3 mt-3 mx-3"><i class="fa-solid fa-plus"></i> Add the event</button>
+                    <a href="{{ route('admin.events.index') }}"
+                        class="btn ">Back</a>
                 </div> 
             </form>
         </div>

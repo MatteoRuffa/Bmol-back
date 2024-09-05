@@ -1,5 +1,5 @@
-{{-- @include('partials.modal-show') DA VEDERE SE AGGIUNGERE IN SEGUITO O NO! --}}  
-@if($elements->isEmpty())
+ {{-- @include('partials.modal-show') DA VEDERE SE AGGIUNGERE IN SEGUITO O NO! --}}  
+{{--@if($elements->isEmpty())
     <div class="alert alert-info">
         There are no events to display. Please add a new event.
     </div>
@@ -21,13 +21,7 @@
                 <td id="td-image-cover" class=" d-xl-table-cell"><img class="img-fluid rounded" src="{{ asset('storage/' . $element->image_cover) }}" alt="{{ $element->name }}"></td>
                 <td class="d-xl-table-cell align-content-center">{{ $element->name }}</td>
                 <td class="d-lg-table-cell align-content-center">
-                    @if ($element->promotions->isNotEmpty())
-                        @foreach ($element->promotions as $promotion)
-                            <span>{{ $promotion->title }}</span><br>
-                        @endforeach
-                    @else
-                        <span>N/A</span>
-                    @endif
+                    
                 </td>
                 <td class="d-xl-table-cell align-content-center">
                     @if ($element->visibility == 1)
@@ -69,4 +63,4 @@
         @endforeach
     </tbody>
 </table>
-@endif
+@endif --}}

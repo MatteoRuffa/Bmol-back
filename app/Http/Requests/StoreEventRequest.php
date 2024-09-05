@@ -24,7 +24,7 @@ class StoreEventRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'date' => 'required|date',  // Changed from integer to date to validate the date correctly
-            'time' => 'required|date_format:H:i',  // Changed from integer to hour format
+            'hour' => 'required|date_format:H:i',  // Changed from integer to hour format
             'description' => 'required|string',
             'image_cover' => 'required|image|max:2048',
         ];
@@ -45,8 +45,8 @@ class StoreEventRequest extends FormRequest
             'date.required' => 'The date field is required.',
             'date.date' => 'The date field must be a valid date.',
 
-            'time.required' => 'The time field is required.',
-            'time.date_format' => 'The time field must be in the correct format (hours only).',
+            'hour.required' => 'The time field is required.',
+            'hour.date_format' => 'The time field must be in the correct format (hours only).',
 
             'description.required' => 'The description field is required.',
             'description.string' => 'The description field must be a string.',

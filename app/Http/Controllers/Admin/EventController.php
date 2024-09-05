@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreEventRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class EventController extends Controller
@@ -18,7 +19,7 @@ class EventController extends Controller
     {
         $events = Event::paginate(10);
         $totalEvents = DB::table('events')
-                            //  ->where('deleted_at', null)   DA RIMETTERE DOPO CON LA SOFT DELETE
+                            ->where('deleted_at', null)   
                              ->count();
         return view("admin.events.index", compact('events', 'totalEvents'));
     }
@@ -37,17 +38,30 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         // Usa i dati validati dalla request personalizzata
-        $validatedData = $request->validated();
+        $form_data = $request->validated();
+    
+        // Genera lo slug usando il metodo statico nel modello Event
+        $form_data['slug'] = Event::generateSlug($form_data['name']);
+    
+        // Controlla se è stato caricato un file per l'immagine di copertina
+        if ($request->hasFile('image_cover')) {
+            // Salva l'immagine nella cartella 'events' e ottieni il percorso
+            $img_path = Storage::put('events', $request->file('image_cover'));
+            $form_data['image_cover'] = $img_path;
+        }
 
-        // Genera lo slug usando il metodo statico nel modello
-        $validatedData['slug'] = Event::generateSlug($validatedData['name']);
-
+          // Gestione della visibilità: se non è selezionata, imposta 'visibility' a 0
+        $form_data['visibility'] = $request->has('visibility') ? 1 : 0;
+    
         // Crea un nuovo evento con i dati validati
-        Event::create($validatedData);
-
+        $new_event = new Event();
+        $new_event->fill($form_data);
+        $new_event->save();
+    
         // Redirect alla pagina degli eventi con un messaggio di successo
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully.');
     }
+    
 
 
     /**
