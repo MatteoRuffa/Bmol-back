@@ -72,7 +72,7 @@
                 <div class="mb-3 d-flex justify-content-between @error('image_cover') @enderror gap-5 img_edit">
                     <div class="w-50">
                         <div class="w-75  text-center">
-                            <img id="uploadPreview" class="w-100 uploadPreview" width="100"src="{{ asset('image/placeholder.png') }}" alt="preview">
+                            <img id="uploadPreview" class="w-100 uploadPreview" width="100"src="{{ asset('storage/images/placeholder.png') }}" alt="preview">
                         </div>
         
                         <div class="w-75 mb-3">

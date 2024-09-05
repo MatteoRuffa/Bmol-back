@@ -109,3 +109,14 @@ main {
         }
     }
 }
+
+
+// >>>>>>>>>>>>>>>>>>>Create Events<<<<<<<<<<<<<<<
+#uploadPreview {
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    border: 1px solid gray ;
+    object-fit: cover;
+    max-width: 300px;
+    min-height: 300px;
+}
