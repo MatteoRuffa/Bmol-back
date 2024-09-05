@@ -64,3 +64,48 @@ body {
     border-radius: 15px 15px  0px 0px;
     color: rgb(0, 0, 0);
 }
+
+// >>>>>>>>>>>>>>>>>>>Dashbord<<<<<<<<<<<<<<<<<<<
+ //questo cambia il colore della nav dell'header quando si è loggati
+ .bg-dark {
+    background: linear-gradient(45deg, rgb(48, 48, 48), hsla(176, 11%, 25%, 0.911), rgb(48, 48, 48)) !important;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.form-control:focus {
+    border-color: $mr-text-dark;
+    box-shadow: 0 0 0 0.2rem rgba($mr-text-dark, .25);
+}
+
+.card-header {
+    background: linear-gradient(45deg, rgb(48, 48, 48), hsla(176, 11%, 25%, 0.911), rgb(48, 48, 48)) !important;
+    color: white;
+}
+
+.modal-header {
+    background: linear-gradient(45deg, rgb(48, 48, 48), hsla(176, 11%, 25%, 0.911), rgb(48, 48, 48)) !important;
+    color: white;
+}
+.offcanvas {
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, rgb(48, 48, 48), hsla(176, 11%, 25%, 0.911), rgb(48, 48, 48)) !important;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    #offcanvasDarkNavbarLabel {
+        color: white;
+        font-size: 2rem;
+    }
+}
+
+// >>>>>>>>>>>>>>>>>>>Main<<<<<<<<<<<<<<<<<<<<<<<
+main {
+    // background-color: $mr-text-light;
+    margin-top: 130px;
+    height: 90vh;
+    #dashboard {
+        .card-header {
+            background-color: $mr-text-dark;
+            color: white;
+        }
+    }
+}

@@ -7,17 +7,13 @@
       <a class="navbar-brand" href="#">Menu</a>
     </button>
 
-    <div class="d-flex ">
-      <div class="logo-container align-items-center">
-        <img class="logo-large logo-filter" src="{{ asset('image/logo-6.png') }}" alt="Logo grande">
-        <img class="logo-small logo-filter" src="{{ asset('image/logo-only-B.png') }}" alt="Logo piccolo">
-      </div>
-    </div>
-
     <a href="http://localhost:5174" class="text-decoration-none text-white">
-      <p>
-        <i class="fs-4 fa-solid fa-house-flood-water"></i>
-      </p>
+      <div class="d-flex ">
+        <!-- <div class="logo-container align-items-center">
+          <img class="logo-large logo-filter" src="{{ asset('image/logo-6.png') }}" alt="Logo grande">
+          <img class="logo-small logo-filter" src="{{ asset('image/logo-only-B.png') }}" alt="Logo piccolo">
+        </div> -->
+      </div>
     </a>
 
     @include('partials.header')
