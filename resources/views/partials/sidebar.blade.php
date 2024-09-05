@@ -34,20 +34,20 @@
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
 
           <li class="nav-item">
-            <a class="nav-link {Route::currentRouteName() == 'admin.apartments.index' ? 'active' : ''}}"
-              href="{{route('admin.apartments.index')}}">Apartments</a>
+            <a class=""
+              href="">Apartments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {Route::currentRouteName() == 'admin.services.index' ? 'active' : ''}}"
-              href="{{route('admin.services.index')}}">Services</a>
+            <a class=""
+              href="">Services</a>
           </li>
-          <!-- <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link {Route::currentRouteName() == 'admin.promotions.index' ? 'active' : ''}}"
               href="{{route('admin.promotions.index')}}">Promotions</a>
-          </li> -->
+          </li> --}}
           <li class="nav-item">
-            <a class="nav-link {Route::currentRouteName() == 'admin.lead.index' ? 'active' : ''}}"
-              href="{{route('admin.leads.index')}}">Messages</a>
+            <a class=""
+              href="">Messages</a>
           </li>
           {{-- <li class="nav-item">
             <a class="nav-link {Route::currentRouteName() == 'admin.services.index' ? 'active' : ''}}"
