@@ -6,6 +6,8 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreEventRequest;
+
 
 class EventController extends Controller
 {
@@ -26,15 +28,22 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+         return view("admin.events.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        //
+        // Usa i dati validati dalla request personalizzata
+        $validatedData = $request->validated();
+
+        // Crea un nuovo evento con i dati validati
+        Event::create($validatedData);
+
+        // Redirect alla pagina degli eventi con un messaggio di successo
+        return redirect()->route('admin.events.index')->with('success', 'Event created successfully.');
     }
 
     /**
