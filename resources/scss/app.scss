@@ -120,3 +120,56 @@ main {
     max-width: 300px;
     min-height: 300px;
 }
+
+
+// >>>>>>>>>>>>>>>>>>>Table<<<<<<<<<<<<<<<<<<<<<<<<
+#mr-table {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    
+    .table-icon {
+        font-size: 2rem;
+        text-decoration: none;
+    }
+    button.no-border {
+        border: none!important;
+    }
+    .img-icon {
+        width: 60px;
+        img {
+            width: 100%;
+        }
+    }
+    
+}
+table tr {
+    background: linear-gradient(45deg, rgb(48, 48, 48), hsla(176, 11%, 25%, 0.911), rgb(48, 48, 48)) !important;
+}
+table th {
+    background: transparent !important;
+    color: white;
+    border-bottom: 1px solid black;
+}
+#td-image-cover img {
+    width: 150px !important;
+    object-fit: cover;
+}
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>Pagination<<<<<<<<<<<<<<<<<<<<<<
+.pagination .page-link {
+    background-color: #4A5655;
+    color: white; 
+}
+.pagination .page-item.active .page-link {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    border-color: rgb(255, 252, 51); 
+}
+.pagination .page-link:active {
+    background-color: #4A5655;
+    color: white; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    border-color: rgb(255, 252, 51); 
+}
