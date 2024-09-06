@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Picture;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PictureController extends Controller
 {
@@ -12,7 +14,11 @@ class PictureController extends Controller
      */
     public function index()
     {
-        //
+        $pictures = Picture::paginate(20);
+        $totalPictures = DB::table('pictures')
+                            ->where('deleted_at', null)   
+                             ->count();
+        return view("admin.events.index", compact('pictures', 'totalPictures'));
     }
 
     /**

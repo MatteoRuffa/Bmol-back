@@ -128,7 +128,7 @@ class EventController extends Controller
         $event->delete();
         return redirect()->route('admin.events.index')->with('message', "Event {$event->name} successfully deleted with soft delete.");
     }
-    // public function restore($id)
+    // public function restore($id)     FUNZIONE DI RIPRISTINO  
     // {
     //     // Trova l'evento anche tra quelli eliminati con soft delete
     //     $event = Event::withTrashed()->findOrFail($id);
