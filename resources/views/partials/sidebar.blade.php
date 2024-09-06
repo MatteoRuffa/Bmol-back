@@ -28,15 +28,16 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-
+          
           <li class="nav-item">
-            <a class="nav-link {Route::currentRouteName() == 'admin.events.index' ? 'active' : ''}}"
-              href="">Events</a>
+              <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
+                href="{{ route('admin.dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class=""
-              href="">Services</a>
+              <a class="nav-link {{ Route::currentRouteName() == 'admin.events.index' ? 'active' : '' }}"
+                href="{{ route('admin.events.index') }}">Events</a>
           </li>
+          
           {{-- <li class="nav-item">
             <a class="nav-link {Route::currentRouteName() == 'admin.promotions.index' ? 'active' : ''}}"
               href="{{route('admin.promotions.index')}}">Promotions</a>
