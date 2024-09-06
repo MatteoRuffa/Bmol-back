@@ -8,7 +8,7 @@
     <thead>
         <tr>
             <th class="text-white w-15 d-none fw-normal d-xl-table-cell" scope="col">Event cover</th>
-            <th class="text-white w-25 d-xl-table-cell fw-normal" scope="col">Event name</th>
+            <th class="text-white w-20 d-xl-table-cell fw-normal" scope="col">Event name</th>
             <th class="text-white w-15 fw-normal d-lg-table-cell" scope="col">Date</th>
             <th class="text-white w-15 fw-normal d-lg-table-cell" scope="col">Time</th>
             <th scope="col" class="text-white w-15 fw-normal d-lg-table-cell">Visibility</th>
@@ -21,7 +21,7 @@
             <tr>
                 <td id="td-image-cover" class=" d-xl-table-cell"><img class="img-fluid rounded" src="{{ asset('storage/' . $element->image_cover) }}" alt="{{ $element->name }}"></td>
                 <td class="d-xl-table-cell align-content-center">{{ $element->name }}</td>
-                <td class="d-lg-table-cell align-content-center">{{ $element->date }}</td>
+                <td class="d-lg-table-cell align-content-center">{{ \Carbon\Carbon::parse($element->date)->format('d/m/Y') }}</td>
                 <td class="d-lg-table-cell align-content-center">{{ \Carbon\Carbon::createFromFormat('H:i:s', $element->hour)->format('H:i') }}</td>
                 <td class="d-xl-table-cell align-content-center">
                     @if ($element->visibility == 1)
