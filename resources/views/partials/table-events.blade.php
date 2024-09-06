@@ -48,18 +48,18 @@
                                 <div class="icon-container">
                                     <i class="fs-3 fas fa-pencil-alt"></i>
                                 </div>
-                            </a>{{--
-                            <form class="d-inline" id="delete-form-{{ $element->id }}" action="{{ route('admin.apartments.destroy', $element->id) }}"
+                            </a>
+                            <form class="d-inline" id="delete-form-{{ $element->id }}" action="{{ route('admin.events.destroy', $element->id) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn draw-border" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $element->id }}">
                                     <i class="fs-3 text-danger fa-solid fa-trash"></i>
                                 </button>
-                            </form> --}}
+                            </form>
                 </td>
             </tr>
-            {{--  @include('partials.modal-delete', ['element' => $element]) --}}
+            @include('partials.modal-delete', ['element' => $element]) 
         @endforeach
     </tbody>
 </table>

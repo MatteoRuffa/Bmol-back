@@ -122,8 +122,20 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return redirect()->route('admin.events.index')->with('message', "Event {$event->name} successfully deleted with soft delete.");
     }
+    // public function restore($id)
+    // {
+    //     // Trova l'evento anche tra quelli eliminati con soft delete
+    //     $event = Event::withTrashed()->findOrFail($id);
+        
+    //     // Ripristina l'evento
+    //     $event->restore();
+        
+    //     return redirect()->route('admin.events.index')->with('message', "Event {$event->name} successfully restored.");
+    // }
 }
