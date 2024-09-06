@@ -16,9 +16,9 @@ class PictureController extends Controller
     {
         $pictures = Picture::paginate(20);
         $totalPictures = DB::table('pictures')
-                            ->where('deleted_at', null)   
+                            // ->where('deleted_at', null)   
                              ->count();
-        return view("admin.events.index", compact('pictures', 'totalPictures'));
+        return view("admin.pictures.index", compact('pictures', 'totalPictures'));
     }
 
     /**
