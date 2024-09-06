@@ -6,6 +6,8 @@ use App\Models\Picture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePictureRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
@@ -26,15 +28,33 @@ class PictureController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.pictures.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePictureRequest $request)
     {
-        //
+       // Usa i dati validati dalla request personalizzata
+        $form_data = $request->validated();
+
+       // Controlla se è stato caricato un file per l'immagine di copertina
+        if ($request->hasFile('image')) 
+            {
+            // Salva l'immagine nella cartella 'events' e ottieni il percorso
+            $img_path = Storage::put('events', $request->file('image'));
+            $form_data['image'] = $img_path;
+            };
+
+
+        // Crea un nuovo evento con i dati validati
+        $new_event = new Picture();
+        $new_event->fill($form_data);
+        $new_event->save();
+
+        // Redirect alla pagina degli eventi con un messaggio di successo
+        return redirect()->route('admin.pictures.index')->with('success', 'picture added successfully.');
     }
 
     /**

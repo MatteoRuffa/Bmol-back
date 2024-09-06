@@ -5,7 +5,7 @@
 <section class="container py-5">
     <div class="container rounded-2 container-table">
         <h1 class=" fw-bolder">Add a new Picture:</h1>
-        <div id="ls-edit" class=""></div>
+        <div id="ls-edit" class="">
             <form action="{{ route('admin.pictures.store') }}" method="POST" enctype="multipart/form-data" id="" >
                 @csrf
                 <div class="mb-3 d-flex justify-content-between @error('image_cover') @enderror gap-5 img_edit">
@@ -24,6 +24,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-center mx-auto justify-content-center d-flex gap-2">
+                    <button type="submit" class="btn-2 draw-border-2 p-2 px-3 mt-3 mx-3"><i class="fa-solid fa-plus"></i> Add the picture</button>
+                    <a href="{{ route('admin.events.index') }}"
+                        class="btn ">Back</a>
+                </div> 
             </form>
         </div>
     </div> 
