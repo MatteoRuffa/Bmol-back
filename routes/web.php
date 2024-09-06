@@ -23,7 +23,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('events', EventController::class)->parameters(['events'=>'event:slug']);
+    Route::resource('events', EventController::class)->parameters(['events' => 'event:slug']);
     // Route::post('/admin/events/store', [EventController::class, 'store'])->name('admin.events.store');
 
 });

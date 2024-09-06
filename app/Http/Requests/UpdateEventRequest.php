@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEventRequest extends FormRequest
+class UpdateEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;  // Set to true to allow the request
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class StoreEventRequest extends FormRequest
         ];
     }
 
-    /**
+     /**
      * Get the custom messages for validation errors.
      *
      * @return array<string, string>
@@ -46,7 +46,7 @@ class StoreEventRequest extends FormRequest
             'date.date' => 'The date field must be a valid date.',
 
             'hour.required' => 'The time field is required.',
-            'hour.date_format' => 'The time field must be in the correct format (hours only).',
+            'hour.date_format' => 'The time field must be in the correct format (hours and minute only).',
 
             'description.required' => 'The description field is required.',
             'description.string' => 'The description field must be a string.',

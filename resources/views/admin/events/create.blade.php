@@ -8,7 +8,7 @@
         <h1 class=" fw-bolder">Add a new Events:</h1>
         <h3>General informations</h3>
         <div id="ls-edit" class="">
-            <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="create-apartment-form" >
+            <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="" >
                 @csrf
                 <div class="mb-3 @error('name') is-invalid @enderror">
                     <label for="name" class="form-label fs-5 fw-medium">Name</label>

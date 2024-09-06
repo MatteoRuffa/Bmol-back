@@ -43,12 +43,12 @@
                                 <div class="icon-container">
                                     <i class="fs-3 fas fa-info-circle"></i>
                                 </div>
-                            </a> 
-                            <a href="{{ route('admin.apartments.edit', $element) }}" class="btn draw-border">
+                            </a> --}}
+                            <a href="{{ route('admin.events.edit', $element) }}" class="btn draw-border">
                                 <div class="icon-container">
                                     <i class="fs-3 fas fa-pencil-alt"></i>
                                 </div>
-                            </a>
+                            </a>{{--
                             <form class="d-inline" id="delete-form-{{ $element->id }}" action="{{ route('admin.apartments.destroy', $element->id) }}"
                                 method="POST">
                                 @csrf

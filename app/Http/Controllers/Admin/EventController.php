@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -29,7 +30,7 @@ class EventController extends Controller
      */
     public function create()
     {
-         return view("admin.events.create");
+        return view("admin.events.create");
     }
 
     /**
@@ -77,17 +78,47 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view("admin.events.edit", compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(UpdateEventRequest $request, $id)
     {
-        //
-    }
+        // Trova l'evento esistente tramite l'ID
+        $event_modified = Event::findOrFail($id);
 
+        // Valida i dati inviati dalla request
+        $form_data = $request->validated();
+
+        // Se il campo immagine viene aggiornato
+        if ($request->hasFile('image_cover')) {
+            // Se esiste un'immagine precedente, eliminala
+            if ($event_modified->image_cover) {
+                Storage::delete($event_modified->image_cover);
+            }
+
+            // Carica la nuova immagine e ottieni il percorso
+            $img_path = Storage::put('events', $request->file('image_cover'));
+            $form_data['image_cover'] = $img_path;
+        }
+
+        // Se il nome dell'evento è cambiato, rigenera lo slug
+        if ($event_modified->name != $form_data["name"]) {
+            $form_data["slug"] = Event::generateSlug($form_data["name"]);
+        }
+
+        // Aggiorna la visibilità: imposta 1 se è selezionata, altrimenti 0
+        $form_data['visibility'] = $request->has('visibility') ? 1 : 0;
+
+        // Riempi i campi modificati e salva l'evento
+        $event_modified->fill($form_data);
+        $event_modified->update();
+
+        // Reindirizza alla pagina degli eventi con un messaggio di successo
+        return redirect()->route("admin.events.index")->with('message', "Event (id:{$event_modified->id}): {$event_modified->name} modified successfully");
+    }
     /**
      * Remove the specified resource from storage.
      */
