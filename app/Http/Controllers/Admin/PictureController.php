@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Picture;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class PictureController extends Controller
      */
     public function index()
     {
-        $pictures = Picture::paginate(20);
+        $pictures = Picture::all();
         $totalPictures = DB::table('pictures')
                             // ->where('deleted_at', null)   
                              ->count();
@@ -28,7 +29,8 @@ class PictureController extends Controller
      */
     public function create()
     {
-        return view("admin.pictures.create");
+        $events = Event::all();  
+        return view("admin.pictures.create", compact('events'));  
     }
 
     /**
@@ -43,10 +45,12 @@ class PictureController extends Controller
         if ($request->hasFile('image')) 
             {
             // Salva l'immagine nella cartella 'events' e ottieni il percorso
-            $img_path = Storage::put('events', $request->file('image'));
+            $img_path = $request->file('image')->store('images', 'public');
             $form_data['image'] = $img_path;
             };
 
+
+        $form_data['event_id'] = $request->input('event_id');
 
         // Crea un nuovo evento con i dati validati
         $new_event = new Picture();

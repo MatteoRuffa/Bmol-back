@@ -38,10 +38,10 @@
                 href="{{ route('admin.events.index') }}">Events</a>
           </li>
           
-          {{-- <li class="nav-item">
-            <a class="nav-link {Route::currentRouteName() == 'admin.promotions.index' ? 'active' : ''}}"
-              href="{{route('admin.promotions.index')}}">Promotions</a>
-          </li> --}}
+          <li class="nav-item">
+            <a class="nav-link {{ Route::currentRouteName() == 'admin.pictures.index' ? 'active' : ''}}"
+              href="{{route('admin.pictures.index')}}">Pictures</a>
+          </li> 
           <li class="nav-item">
             <a class=""
               href="">Messages</a>

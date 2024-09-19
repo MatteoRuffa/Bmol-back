@@ -11,6 +11,7 @@ class Picture extends Model
     use HasFactory;
     protected $fillable = [
         'image',
+        'event_id',
     ];
 
     public function event()

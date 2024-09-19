@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
+use App\Models\Picture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class EventController extends Controller
         $events = Event::paginate(10);
         $totalEvents = DB::table('events')
                             ->where('deleted_at', null)   
-                             ->count();
+                            ->count();
         return view("admin.events.index", compact('events', 'totalEvents'));
     }
 
